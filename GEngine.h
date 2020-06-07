@@ -8,7 +8,7 @@
 namespace ge
 {
 #define ORIGIN vec2<int>{0,0}
-#define VERSION "v.1.4.1"
+#define VERSION "v.1.4.2"
 #define GE ge
 
 #pragma region PreDefs
