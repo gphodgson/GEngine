@@ -1203,11 +1203,6 @@ namespace ge
 	{
 		return _value > _high ? _high : _value < _low ? _low : _value;
 	}
-	//***DEPRECATED***
-	bool KeyIsDown(sf::Keyboard::Key key)
-	{
-		return sf::Keyboard::isKeyPressed(key);
-	}
 
 	HSLColor RGBtoHSL(Color _color) 
 	{
