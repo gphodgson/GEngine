@@ -8,7 +8,7 @@
 namespace ge
 {
 #define ORIGIN vec2<int>{0,0}
-#define VERSION "v.1.4.2"
+#define VERSION "v.1.4.3"
 #define GE ge
 
 #pragma region PreDefs
@@ -32,13 +32,18 @@ namespace ge
 			return vec2{this->x + _vec2.x, this->y + _vec2.y};
 		}
 
+		/*
+			Returns the sum vector.
+			returns: vec2
+			attrib: scalar value
+		*/
 		vec2<Type> add(Type _factor)
 		{
 			return vec2{ this->x + _factor, this->y + _factor };
 		}
 
 		/*
-			Returns the difference of vectors.
+			Returns the difference vector.
 			returns: vec2
 			attrib: _vec2 vec2
 		*/
@@ -46,13 +51,19 @@ namespace ge
 		{
 			return vec2{ this->x - _vec2.x, this->y - _vec2.y };
 		}
+
+		/*
+			Returns the difference vector.
+			returns: vec2
+			attrib: scalar value
+		*/
 		vec2<Type> sub(Type _factor)
 		{
 			return vec2{ this->x - _factor, this->y - _factor };
 		}
 
 		/*
-			Returns the product of vectors.
+			Returns the product vector.
 			returns: vec2
 			attrib: _vec2 vec2
 		*/
@@ -60,13 +71,19 @@ namespace ge
 		{
 			return vec2{ this->x * _vec2.x, this->y * _vec2.y };
 		}
+
+		/*
+			Returns the product vector.
+			returns: vec2
+			attrib: scalar value
+		*/
 		vec2<Type> mult(Type _factor)
 		{
 			return vec2{ this->x * _factor, this->y * _factor };
 		}
 
 		/*
-			Returns the quotient of vectors.
+			Returns the quotient vector.
 			returns: vec2
 			attrib: _vec2 vec2
 		*/
@@ -74,28 +91,45 @@ namespace ge
 		{
 			return vec2{ this->x / _vec2.x, this->y / _vec2.y };
 		}
+		/*
+			Returns the quotient vector.
+			returns: vec2
+			attrib: scalar value
+		*/
 		vec2<Type> div(Type _factor)
 		{
 			return vec2{ this->x / _factor, this->y / _factor };
 		}
 
+		/*
+			Returns the sum of x and y.
+			returns: Scalar sum.
+		*/
 		Type sum() 
 		{
 			return x + y;
 		}
-
+		/*
+			Returns the product of x and y.
+			returns: Scalar product
+		*/
 		Type product() 
 		{
 			return x * y;
 		}
 
+		/*
+			Returns the dot product of this vector and another.
+			returns: Scalar value
+			attrib: _vec2 vec2
+		*/
 		Type dot(vec2<Type> _vec2) 
 		{
 			return (x * _vec2.x) + (y * _vec2.y);
 		}
 
 		/*
-			Compares Vectors.
+			Compares Vectors to see if their x and y are equal.
 			returns: bool
 		*/
 		bool equals(vec2 _vec2) 
@@ -112,37 +146,68 @@ namespace ge
 			return vec2<Type>{this->x, this->y};
 		}
 
+		/*
+			Returns this vector in string format as follows: "{x}, {y}".
+			returns: std::string
+		*/
 		std::string to_string()
 		{
 			return std::to_string(this->x) + ", " + std::to_string(this->y);
 		}
 
+		/*
+			Returns this vector in vec2<int> format.
+			returns: vec2<int>
+		*/
 		vec2<int> to_int() 
 		{
 			return vec2<int>{int(this->x), int(this->y)};
 		}
 
+		/*
+			Returns this vector in vec2<float> format.
+			returns: vec2<float>
+		*/
 		vec2<float> to_float()
 		{
 			return vec2<float>{float(this->x), float(this->y)};
 		}
 
-
+		/*
+			Returns this vector in sf::Vector2f format.
+			returns: sf::Vector2f
+		*/
 		sf::Vector2f to_Vector2f() 
 		{
 			return sf::Vector2f(float(this->x), float(this->y));
 		}
 
+		/*
+			Returns this vector in sf::Vector2i format.
+			returns: sf::Vector2i
+		*/
 		sf::Vector2i to_Vector2i()
 		{
 			return sf::Vector2i(int(this->x), int(this->y));
 		}
 
+		/*
+			*Static*
+			Converts a sf::Vector2f to vec2<float>
+			returns:vec2<float>
+			attrib: sf::Vector2f
+		*/
 		static vec2<float> sfml_float_convert(sf::Vector2f _Vector2f)
 		{
 			return vec2<float>{_Vector2f.x, _Vector2f.y};
 		}
 
+		/*
+			*Static*
+			Converts a sf::Vector2i to vec2<int>
+			returns:vec2<int>
+			attrib: sf::Vector2i
+		*/
 		static vec2<int> sfml_int_convert(sf::Vector2i _Vector2i)
 		{
 			return vec2<int>{_Vector2i.x, _Vector2i.y};
@@ -158,17 +223,33 @@ namespace ge
 		Type w;
 		Type h;
 
+		/*
+			Returns the Position of this Rect.
+			returns: vec2<Type>
+		*/
 		vec2<Type> getPos() { return vec2<Type>{x, y}; }
+
+		/*
+			Returns the Size of this Rect.
+			returns: vec2<Type>
+		*/
 		vec2<Type> getSize() { return vec2<Type>{w, h}; }
 	};
 #pragma endregion
 #pragma region ivec2 & fvec2 (Deprecated)
-	//DEPRECATED
+	/*
+		Vector representing an integer x and y postition in space.
+		THIS IS DEPRECATED
+	*/
 	struct ivec2
 	{
 		int x;
 		int y;
 
+		/*
+			Add the x and y values of another vector to this vector.
+			attrib: ivec2
+		*/
 		void add(ivec2 _vec)
 		{
 			this->x += _vec.x;
@@ -176,12 +257,19 @@ namespace ge
 		}
 	};
 
-	//DEPRECATED
+	/*
+		Vector representing a float x and y postition in space.
+		THIS IS DEPRECATED
+	*/
 	struct fvec2
 	{
 		float x;
 		float y;
 
+		/*
+			Add the x and y values of another vector to this vector.
+			attrib: fvec2
+		*/
 		void add(fvec2 _vec)
 		{
 			this->x += _vec.x;
@@ -190,6 +278,14 @@ namespace ge
 	};
 #pragma endregion
 #pragma region Color
+	/*
+		Class representing a color in RGBA color space.
+		Public Fields:
+			uint r,
+			uint g,
+			uint b,
+			uint a
+	*/
 	class Color 
 	{
 	public:
@@ -198,6 +294,9 @@ namespace ge
 		unsigned int b;
 		unsigned int a;
 	public:
+		/*
+			Default constructor: Creates a color that is pure black(r=0,g=0,b=0,a=255).
+		*/
 		Color()
 		{
 			r = 0;
@@ -205,6 +304,11 @@ namespace ge
 			b = 0;
 			a = 255;
 		}
+
+		/*
+			Constructor: Creates a grayscale color, _greyscale will be applied to r, g, and b.
+			attrib: uint _grayscale
+		*/
 		Color(unsigned int _greyscale) 
 		{
 			if (_greyscale > 255)
@@ -214,17 +318,16 @@ namespace ge
 			b = _greyscale;
 			a = 255;
 		}
-		Color(unsigned int _r, unsigned int _g, unsigned int _b) 
-		{
-			if (_r > 255 || _g > 255 || _b > 255) 
-				throw "Color value outside of range!";
 
-			r = _r;
-			g = _g;
-			b = _b;
-			a = 255;
-		}
-		Color(unsigned int _r, unsigned int _g, unsigned int _b, unsigned int _a)
+		/*
+			Constructor: Creates a color with r, g, and b values. a defaults to 255.
+			attrib:
+				unint _r,
+				unint _g,
+				unint _b,
+				unint _a = 255
+		*/
+		Color(unsigned int _r, unsigned int _g, unsigned int _b, unsigned int _a = 255)
 		{
 			if (_r > 255 || _g > 255 || _b > 255 || _a > 255)
 				throw "Color value outside of range!";
@@ -234,10 +337,20 @@ namespace ge
 			b = _b;
 			a = _a;
 		}
+		/*
+			Converts this Color to SFML color type.
+			returns: sf::Color
+		*/
 		sf::Color convertToSfmlColor() 
 		{
 			return sf::Color(r, g, b, a);
 		}
+		/*
+			*STATIC*
+			Converts an sf::Color to ge::Color
+			returns: ge::Color
+			attrib: sf::Color _color
+		*/
 		static Color convertFromSfmlColor(sf::Color _color)
 		{
 			return Color(_color.r, _color.g, _color.b, _color.a);
@@ -245,21 +358,34 @@ namespace ge
 	};
 #pragma endregion
 #pragma region HSLColor
-
+	/*
+		Class representing a color in HSL color space.
+		Public Fields:
+			float h,
+			float s,
+			float l
+	*/
 	class HSLColor
 	{
 	public:
+		/*
+			Default constructor: Creates a color that is pure black(h=0,s=1.0,l=0.0).
+		*/
 		HSLColor()
 		{
 			h = 0; s = 1.0; l = 0;
 		}
-		HSLColor(float _h)
-		{
-			if (_h < 0 || _h > 360)
-				throw "Color Values out of range";
-			h = _h; s = 1.0; l = 0.5;
-		}
-		HSLColor(float _h, float _s, float _l)
+
+		/*
+			Constructor: Creates a color using h, s, and l.
+			attrib: 
+				float _h,
+				float _s = 1.0,
+				float _l = 0.5
+
+		*/
+
+		HSLColor(float _h, float _s = 1.0f, float _l = 0.5f)
 		{
 			if (_s < 0 || _s > 1 || _l < 0 || _l > 1)
 				throw "Color Values out of range";
@@ -273,9 +399,18 @@ namespace ge
 	};
 #pragma endregion
 #pragma region Timer
+	/*
+		Class that represents a timer in real-time.
+	*/
 	class Timer 
 	{
 	public:
+		/*
+			Constructor: Creates a timer using milliseconds, can be created started or paused.
+			attrib:
+				uint _time : time in milliseconds.,
+				bool _start = true : Created the timer started or paused.
+		*/
 		Timer(unsigned int _time, bool _start = true)
 		{
 			ElapsedTime = 0;
@@ -284,10 +419,10 @@ namespace ge
 			TimerOn = _start;
 		}
 
-		//Returns a bool representing
-		//if the timer has passed its 
-		//alloted time. Evoking this
-		//method will reset the timer.
+		/*
+			Checks the timer if it is completed. This will also reset the timer if it is completed.
+			returns: bool;
+		*/
 		bool check() 
 		{
 			if(isCompleted())
@@ -298,10 +433,10 @@ namespace ge
 			return false;
 		}
 
-		//Returns a bool representing
-		//if the timer has passed its 
-		//alloted time. Evoking this
-		//method will not reset the timer.
+		/*
+			Checks the timer if it is completed. This will NOT reset the timer if it is completed.
+			returns: bool;
+		*/
 		bool isCompleted() 
 		{
 			if (getTimeLeft() == 0 && TimerOn) 
@@ -311,12 +446,20 @@ namespace ge
 			return false;
 		}
 
+		/*
+			returns the amout of time the Timer has existed.
+			returns: uint
+		*/
 		unsigned int getElapsedTime() 
 		{
 			update();
 			return ElapsedTime;
 		}
 
+		/*
+			returns the amout of time left on the timer.
+			returns: uint;
+		*/
 		unsigned int getTimeLeft()
 		{
 			int timeLeft;
@@ -326,6 +469,9 @@ namespace ge
 			return  timeLeft > 0 ? timeLeft : 0;
 		}
 
+		/*
+			Updates the timer, this has to be run every frame after the timer's creation to work properly.
+		*/
 		void update() 
 		{
 			int timePassed = Clock.getElapsedTime().asMilliseconds() - ElapsedTime - PauseTime;
@@ -334,6 +480,17 @@ namespace ge
 			else PauseTime += timePassed;
 		}
 
+		/*
+			Will fast forward the timer to being completed.
+		*/
+		void Complete() 
+		{
+			ElapsedTime = Time;
+		}
+
+		/*
+			Restarts the timer.
+		*/
 		void reset() 
 		{
 			ElapsedTime = 0;
@@ -341,6 +498,10 @@ namespace ge
 			Clock.restart();
 		}
 
+		/*
+			Will pause the timer. returns a bool depending on if the timer is already stopped. 
+			returns: bool.
+		*/
 		bool stop() 
 		{
 			if(TimerOn)
@@ -352,6 +513,10 @@ namespace ge
 			return false;
 		}
 
+		/*
+			Will start the timer. returns a bool depending on if the timer is already started.
+			returns: bool.
+		*/
 		bool start() 
 		{
 			if (!TimerOn) 
@@ -363,6 +528,10 @@ namespace ge
 			return false;
 		}
 
+		/*
+			Sets a new length on the Timer.
+			attrib: uint _newTime
+		*/
 		void setTime(unsigned int _newTime) 
 		{
 			Time = _newTime;
@@ -392,24 +561,43 @@ namespace ge
 			TILDE,
 		};
 		
+		/*
+			Checks if the key is clicked: will set to true for only the first frame it is held, until released
+			attrib: KBD::Key _key
+		*/
 		bool isKeyClicked(Key _key) 
 		{
 			return downKeys[_key];
 		}
+		/*
+			Checks if the key is clicked: will set to true for only the first frame it is held, until released
+			attrib: int _keyCode
+		*/
 		bool isKeyClicked(int _keyCode)
 		{
 			return downKeys[_keyCode];
 		}
 
+		/*
+			Checks if the key is held down: will set to true for every frame the key is held.
+			attrib: KBD::Key _key
+		*/
 		bool isKeyHeld(Key _key) 
 		{
 			return heldKeys[_key];
 		}
+		/*
+			Checks if the key is held down: will set to true for every frame the key is held.
+			attrib: int _keyCode.
+		*/
 		bool isKeyHeld(int _keyCode)
 		{
 			return heldKeys[_keyCode];
 		}
 
+		/*
+			Updates the keyboard object, run every frame for the object to work properly.
+		*/
 		void update() 
 		{
 			for (int k = 0; k < downKeys.size(); k++) 
@@ -620,8 +808,6 @@ namespace ge
 			}
 
 		}
-
-	private:
 
 	private:
 		std::array<bool, 100> downKeys;
