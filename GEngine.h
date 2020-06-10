@@ -8,7 +8,7 @@
 namespace ge
 {
 #define ORIGIN vec2<int>{0,0}
-#define VERSION "v.1.4.1"
+#define VERSION "v.1.4.2"
 #define GE ge
 
 #pragma region PreDefs
@@ -77,6 +77,21 @@ namespace ge
 		vec2<Type> div(Type _factor)
 		{
 			return vec2{ this->x / _factor, this->y / _factor };
+		}
+
+		Type sum() 
+		{
+			return x + y;
+		}
+
+		Type product() 
+		{
+			return x * y;
+		}
+
+		Type dot(vec2<Type> _vec2) 
+		{
+			return (x * _vec2.x) * (y * _vec2.y);
 		}
 
 		/*
@@ -935,7 +950,7 @@ namespace ge
 					}
 				}
 
-				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && !blockESCtoQuit)
+				if(kbd.isKeyClicked(kbd.ESCAPE) && !blockESCtoQuit)
 				{
 					window->close();
 				}
@@ -983,6 +998,25 @@ namespace ge
 		return (value - x1) / (y1 - x1) * (y2 - x2) + x2;
 	}
 
+	int clamp(int _value, int _high, int _low) 
+	{
+		return _value >= _high ? _high : _value <= _low ? _low : _value;
+	}
+
+	float fclamp(float _value, float _high, float _low)
+	{
+		return _value >= _high ? _high : _value <= _low ? _low : _value;
+	}
+
+	int clamp_ex(int _value, int _high, int _low)
+	{
+		return _value > _high ? _high : _value < _low ? _low : _value;
+	}
+
+	float fclamp_ex(float _value, float _high, float _low)
+	{
+		return _value > _high ? _high : _value < _low ? _low : _value;
+	}
 	//***DEPRECATED***
 	bool KeyIsDown(sf::Keyboard::Key key)
 	{
