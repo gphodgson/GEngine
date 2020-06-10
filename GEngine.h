@@ -91,7 +91,7 @@ namespace ge
 
 		Type dot(vec2<Type> _vec2) 
 		{
-			return (x * _vec2.x) * (y * _vec2.y);
+			return (x * _vec2.x) + (y * _vec2.y);
 		}
 
 		/*
@@ -133,7 +133,7 @@ namespace ge
 			return sf::Vector2f(float(this->x), float(this->y));
 		}
 
-		sf::Vector2f to_Vector2i()
+		sf::Vector2i to_Vector2i()
 		{
 			return sf::Vector2i(int(this->x), int(this->y));
 		}
